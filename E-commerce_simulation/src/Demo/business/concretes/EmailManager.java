@@ -17,7 +17,7 @@ public class EmailManager implements EmailService{
 		}
 		System.out.println("E posta : "+user.getE_mail());
 		Pattern pattern =Pattern.compile(EMAIL_PATTERN,Pattern.CASE_INSENSITIVE);
-		return pattern.matcher(user.getE_mail()).find();
+		return pattern.matcher(user.getE_mail()).find();   
 	}
 
 }

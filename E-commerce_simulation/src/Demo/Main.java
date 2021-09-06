@@ -13,8 +13,8 @@ public class Main {
 			
 			
 		
-		User user = new User("Rümeysa","Ceylan","rumeydcc@gmail.com.tr","1234567");
-		userService.add(user);
+		User user = new User("fvxvvdf","Cdfsdsn","rumeydcc@gmail.com.tr","1234567");
+		userService.add(user);   
 		
 	}
 
