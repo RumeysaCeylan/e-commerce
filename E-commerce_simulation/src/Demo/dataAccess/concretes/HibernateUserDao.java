@@ -44,6 +44,11 @@ public class HibernateUserDao implements UserDao{
 		return users;
 	}
 
+	@Override
+	public void enter(User user, String email, String password) {
+		System.out.println("Giriþ yapýlýyor : \n HOÞGELDÝNÝZ \n" + user.getName()+" "+user.getSurname());
+	}
+
 	
 
 }

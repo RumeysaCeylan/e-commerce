@@ -1,47 +1,64 @@
 package Demo.business.concretes;
-
-import java.util.ArrayList;
-import java.util.List;
-import Demo.business.abstracts.EmailService;
+import Demo.business.abstracts.CheckService;
 import Demo.business.abstracts.UserService;
+import Demo.core.GoogleService;
 import Demo.dataAccess.abstracts.UserDao;
 import Demo.entities.concretes.User;
 
 public class UserManager implements UserService{
   private UserDao userDao;
-  private EmailService emailService;
-  List<String> mail =new ArrayList<String>();
+  private CheckService checkService;
+  private GoogleService googleService;
   
-	public UserManager(UserDao userDao,EmailService emailService) {
+	public UserManager(UserDao userDao,CheckService checkService,GoogleService googleService) {
 	super();
 	this.userDao = userDao;
-	this.emailService=emailService;
+	this.checkService=checkService;
+	this.googleService=googleService;
 }
 
 	@Override
 	public void add(User user) {
-		if(user.getPassword().length()<6) {
-			System.out.println("parola en az 6 karakterli olmalýdýr");
+
+		if(!checkService.emailChecker(user)) {
+			System.out.println("hatalý mail adresi");
+		}
+		else if(checkService.fullNameChecker(user)&&checkService.passwordChecker(user)) {if(checkService.Link(user)) {
+				System.out.println("Doðrulama linki gönderilmiþtir "+user.getE_mail());
+				this.userDao.add(user);
+			}
+			
+		}
+	 
+			
+		else {
+			
 			return;
 		}
-		else if(user.getName().length()<2||user.getSurname().length()<2) {
-			System.out.println("Ýsim ve soy isim en az 2 karakterli olmalýdýr");
-			return;
-		}
-		else if(!emailService.emailChecker(user)) {
-			System.out.println("Geçersiz email adresi");
-			return;
-		}
-		
-		this.userDao.add(user);
+	
 		
 	}
 
 	@Override
-	public void enter(User user) {
-		// TODO Auto-generated method stub
+	public void enter(User user,String email,String password) {
+	if(checkService.verifiedEmail(user, email, password)) {
+		this.userDao.enter(user, email, password);
+	}
+	else {
+		System.out.println("Hatalý giriþ !!!");
+		return;
+	}
+			
+		
 		
 	}
+
+	@Override
+	public void enterWGoogle(String email) {
+		googleService.LoginwGoogle(email);
+		
+	}
+	
 
 	
 
