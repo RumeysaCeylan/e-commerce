@@ -23,18 +23,15 @@ public class UserManager implements UserService{
 		if(!checkService.emailChecker(user)) {
 			System.out.println("hatalý mail adresi");
 		}
-		else if(checkService.fullNameChecker(user)&&checkService.passwordChecker(user)) {if(checkService.Link(user)) {
+		else if(checkService.fullNameChecker(user)&&checkService.passwordChecker(user)) {
 				System.out.println("Doðrulama linki gönderilmiþtir "+user.getE_mail());
 				this.userDao.add(user);
-			}
+			
 			
 		}
 	 
 			
-		else {
-			
-			return;
-		}
+		
 	
 		
 	}

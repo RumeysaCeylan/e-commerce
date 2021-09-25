@@ -16,10 +16,13 @@ public class Main {
 		
 		User user = new User("kkkk","Cdfsdsn","rumeydcc@gmail.com.tr","12345678");
 		userService.add(user);   
-		User user2= new User("fvxvvdf","Cdfsdsn","rumeyd444cc@gmail.com.tr","12345678");
+		System.out.println("\n");
+		User user2= new User("fvxvvdf","Cdfsdsn","rumeyd444cc@gmail.com.tr","111111");
 		userService.add(user2);
-	/*	userService.enter(user2, "rumeyd444cc@gmail.com.tr", "1234567");
-		userService.enterWGoogle("sdass@gmail.com");*/
+		System.out.println("\n");
+		userService.enter(user2, "rumeyd444cc@gmail.com.tr", "111111");
+		System.out.println("\n");
+		userService.enterWGoogle("sdass@gmail.com");
 	}
 
 }
