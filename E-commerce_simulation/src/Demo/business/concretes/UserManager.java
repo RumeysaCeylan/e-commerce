@@ -29,9 +29,7 @@ public class UserManager implements UserService{
 			
 			
 		}
-	 
-			
-		
+	 	
 	
 		
 	}
@@ -52,8 +50,12 @@ public class UserManager implements UserService{
 
 	@Override
 	public void enterWGoogle(String email) {
-		googleService.LoginwGoogle(email);
-		
+		if(checkService.checkGoogle(email)) {
+		this.googleService.LoginwGoogle(email);
+		}
+		else {
+			System.out.println("Lütfen geçerli bir mail adresi girin hatalý mail adresi :"+email);
+		}
 	}
 	
 

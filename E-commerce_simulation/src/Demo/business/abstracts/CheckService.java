@@ -7,5 +7,5 @@ public interface CheckService {
 	boolean fullNameChecker(User user);
 	boolean passwordChecker(User user);
 	boolean verifiedEmail(User user,String email,String password);
-	boolean Link(User user);
+	boolean checkGoogle(String mail);
 }

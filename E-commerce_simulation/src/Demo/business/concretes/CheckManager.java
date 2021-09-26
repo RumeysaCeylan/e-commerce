@@ -52,27 +52,26 @@ public class CheckManager implements CheckService{
 	}
 	@Override
 	public boolean verifiedEmail(User user, String email, String password) {
-		//for(String mail:mail) { //ayný index olmasa bile iki þifre ayný olursa giriþ yapýyor!!!
-		//	for(String password_:password_) {
+	
 			if(user.getE_mail()==email&&user.getPassword()==password) {
 				return true;
 			}
 			
-			
-			//}
-		//}
+		
 	return false;
 		
 	}
+	
 	@Override
-	public boolean Link(User user) {
-	if(emailChecker(user)&&fullNameChecker(user)&&passwordChecker(user)) {
-		System.out.println("Doðrulama linki tamamlanmýþtýr");
-		return true;
-	}
-	else {
-	System.out.println("Doðrulama hatalý üyeliðiniz tamamlanmamýþtýr ");
-		return false;
-	}
+	public boolean checkGoogle(String email) {
+		if(mail.isEmpty()) {
+			System.out.println("Boþ býrakamazsýnýz");
+			return false;
+		}
+		
+		Pattern pattern =Pattern.compile(EMAIL_PATTERN,Pattern.CASE_INSENSITIVE);
+		mail.add(email);
+		return pattern.matcher(email).find();   
+		
 	}
 }
